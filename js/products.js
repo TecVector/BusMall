@@ -2,8 +2,13 @@ var ActiveProducts = [];
 var Product = function(name, imgPath) {
     this.ProductName = name;
     this.Image = imgPath;
+    this.votes = 0;
     ActiveProducts.push(this);
 }
+
+Product.prototype.AddVote = function() {
+    this.votes++;
+};
 
 var products = [
     ['Star Wars Bag', 'bag.jpg'],
