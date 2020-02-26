@@ -18,6 +18,8 @@ function updateImages() {
     }
     imageHolder.innerHTML = '';
     for (var i = 0; i < randomImages.length; i++) {
+        var voteItemContainer = document.createElement('div');
+        voteItemContainer.classList.add('vote-image-holder');
         var img = document.createElement('img');
         img.src = randomImages[i].Image;
         img.classList.add('vote-img');
@@ -25,7 +27,8 @@ function updateImages() {
         img.setAttribute('data-product-name', randomImages[i].ProductName);
         img.addEventListener('click', voteWasMade);
         ImageLoaded(randomImages[i].ProductName);
-        imageHolder.appendChild(img);
+        voteItemContainer.appendChild(img);
+        imageHolder.appendChild(voteItemContainer);
     }
 };
 

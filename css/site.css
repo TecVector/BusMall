@@ -47,18 +47,27 @@ main {
     border-bottom: 1px solid blue;
 }
 
-.vote-img {
-    max-height: 250px;
+.vote-image-holder {
+    height: 250px;
     margin: 10px;
     cursor: pointer;
     border: 1px solid grey;
     border-radius: 15px;
     max-width: 30%;
     vertical-align: top;
+    display: inline-flex;
+    overflow: hidden;
 }
 
-.vote-img:hover {
+.vote-image-holder:hover {
     box-shadow: blueviolet 0 0 15px;
+}
+
+.vote-image-holder img {
+    max-height: 250px;
+    max-width: 100%;
+    margin: 0 auto;
+    vertical-align: middle;
 }
 
 .vote-count {
