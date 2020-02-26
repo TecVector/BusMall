@@ -49,13 +49,13 @@ function renderResults() {
     resultsList.innerHTML = '';
     var resultOutput = [];
     for (var x = 0; x < results.length; x++) {
-        var product = results[x][0];
+        var product = getProductSelected(results[x][0]);
         var votes = results[x].length;
         var voteItem = document.createElement('li');
         var productDisplay = document.createElement('p');
-        productDisplay.textContent = product;
+        productDisplay.textContent = product.ProductName;
         var votesDisplay = document.createElement('span');
-        votesDisplay.textContent = votes;
+        votesDisplay.textContent = votes + ' (Seen ' + product.timesSeen + ' times)';
         votesDisplay.classList.add('vote-count');
         productDisplay.appendChild(votesDisplay);
         voteItem.appendChild(productDisplay);

@@ -43,17 +43,19 @@ for (var x = 0; x < products.length; x++) {
     var newProduct = new Product(products[x][0], imageLocation);
 };
 
-function ImageLoaded(name) {
-    var selected = ActiveProducts.find(obj => {
+function getProductSelected(name) {
+    return ActiveProducts.find(obj => {
         return obj.ProductName == name;
     });
+}
+
+function ImageLoaded(name) {
+    var selected = getProductSelected(name);
     selected.AddSeen();
 }
 
 function ImageVotedFor(name) {
-    var selected = ActiveProducts.find(obj => {
-        return obj.ProductName == name;
-    });
+    var selected = getProductSelected(name);
     selected.AddVote();
 }
 
