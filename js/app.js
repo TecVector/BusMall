@@ -1,5 +1,5 @@
 var votesMade = 0;
-var showResultsAt = 10;
+var showResultsAt = 25;
 var voteResults = [];
 var imageHolder = document.getElementById('imageHolder');
 
@@ -24,28 +24,22 @@ function updateImages() {
         img.id = 'vote_' + i;
         img.setAttribute('data-product-name', randomImages[i].ProductName);
         img.addEventListener('click', voteWasMade);
+        ImageLoaded(randomImages[i].ProductName);
         imageHolder.appendChild(img);
     }
 };
 
 function voteWasMade(event) {
     votesMade++;
+    document.getElementById('votesRequired').textContent = showResultsAt - votesMade;
     var productName = event.srcElement.dataset['productName'];
-    // var votedProduct = ActiveProducts[event.srcElement.dataset['activeIndex']];
-    // console.log(votedProduct);
     voteResults.push(productName);
+    ImageVotedFor(productName);
     if (votesMade >= showResultsAt) {
         renderResults();
     } else {
         updateImages();
     }
-}
-
-function votingHasEnded() {
-    var p = document.createElement('p');
-    p.textContent = "You've reached the maximum number of votes.  Thank-you.";
-    p.classList.add('alert-text');
-    imageHolder.appendChild(p);
 }
 
 function renderResults() {

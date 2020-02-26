@@ -3,12 +3,17 @@ var Product = function(name, imgPath) {
     this.ProductName = name;
     this.Image = imgPath;
     this.votes = 0;
+    this.timesSeen = 0;
     ActiveProducts.push(this);
 }
 
 Product.prototype.AddVote = function() {
     this.votes++;
 };
+
+Product.prototype.AddSeen = function() {
+    this.timesSeen++;
+}
 
 var products = [
     ['Star Wars Bag', 'bag.jpg'],
@@ -37,6 +42,20 @@ for (var x = 0; x < products.length; x++) {
     var imageLocation = 'images/products/' + products[x][1];
     var newProduct = new Product(products[x][0], imageLocation);
 };
+
+function ImageLoaded(name) {
+    var selected = ActiveProducts.find(obj => {
+        return obj.ProductName == name;
+    });
+    selected.AddSeen();
+}
+
+function ImageVotedFor(name) {
+    var selected = ActiveProducts.find(obj => {
+        return obj.ProductName == name;
+    });
+    selected.AddVote();
+}
 
 function getProductsToDisplay() {
     var arr = [];
