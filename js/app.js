@@ -12,9 +12,15 @@ var imageHolder = document.getElementById('imageHolder');
 })();
 
 function updateImages() {
-    var randomImages = getProductsToDisplay();
+    var currentImageFiles = imageHolder.getElementsByTagName('img');
+    var currentDisplayedProducts = [];
+    for (var i = 0; i < currentImageFiles.length; i++) {
+        var productName = currentImageFiles[i].dataset["productName"];
+        currentDisplayedProducts.push(productName);
+    }
+    var randomImages = getProductsToDisplay(currentDisplayedProducts);
     while (randomImages.includes(undefined)) {
-        randomImages = getProductsToDisplay();
+        randomImages = getProductsToDisplay(currentDisplayedProducts);
     }
     imageHolder.innerHTML = '';
     for (var i = 0; i < randomImages.length; i++) {
@@ -50,10 +56,11 @@ function renderResults() {
     var results = groupBy(voteResults, 'length');
     var resultsList = document.getElementById('resultsList');
     resultsList.innerHTML = '';
+
     var resultOutput = [];
-    for (var x = 0; x < results.length; x++) {
-        var product = getProductSelected(results[x][0]);
-        var votes = results[x].length;
+    for (var p = 0; p < ActiveProducts.length; p++) {
+        var product = ActiveProducts[p];
+        var votes = product.votes;
         var voteItem = document.createElement('li');
         var productDisplay = document.createElement('p');
         productDisplay.textContent = product.ProductName;
@@ -65,10 +72,32 @@ function renderResults() {
         resultOutput.push([votes, voteItem]);
     }
     resultOutput.sort(function(a, b) {
+        console.log(a);
+        console.log(b);
         return b[0] - a[0];
     });
     for (var r = 0; r < resultOutput.length; r++) {
         var voteItem = resultOutput[r][1];
         resultsList.appendChild(voteItem);
     }
+    // for (var x = 0; x < results.length; x++) {
+    //     var product = getProductSelected(results[x][0]);
+    //     var votes = results[x].length;
+    //     var voteItem = document.createElement('li');
+    //     var productDisplay = document.createElement('p');
+    //     productDisplay.textContent = product.ProductName;
+    //     var votesDisplay = document.createElement('span');
+    //     votesDisplay.textContent = votes + ' (Seen ' + product.timesSeen + ' times)';
+    //     votesDisplay.classList.add('vote-count');
+    //     productDisplay.appendChild(votesDisplay);
+    //     voteItem.appendChild(productDisplay);
+    //     resultOutput.push([votes, voteItem]);
+    // }
+    // resultOutput.sort(function(a, b) {
+    //     return b[0] - a[0];
+    // });
+    // for (var r = 0; r < resultOutput.length; r++) {
+    //     var voteItem = resultOutput[r][1];
+    //     resultsList.appendChild(voteItem);
+    // }
 }

@@ -60,17 +60,18 @@ function ImageVotedFor(name) {
     selected.AddVote();
 }
 
-function getProductsToDisplay() {
+function getProductsToDisplay(currentImages) {
     var arr = [];
     var selectedIndexes = [];
     for (var i = 0; i < 3; i++) {
         var selectIndex = (Math.floor(Math.random() * (products.length - i)) + 1);
-        while (selectedIndexes.includes(selectIndex)) {
+        var product = ActiveProducts[selectIndex];
+        while (product != undefined && (currentImages.includes(product.ProductName) || selectedIndexes.includes(selectIndex))) {
             selectIndex = (Math.floor(Math.random() * (products.length - i)) + 1);
+            product = ActiveProducts[selectIndex];
         };
         selectedIndexes.push(selectIndex);
-        var product = ActiveProducts[selectIndex];
         arr.push(product);
-    }
+    };
     return arr;
-}
+};
