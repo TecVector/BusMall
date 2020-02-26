@@ -1,5 +1,6 @@
 var ActiveProducts = [];
-var Product = function(name, imgPath) {
+
+function Product(name, imgPath) {
     this.ProductName = name;
     this.Image = imgPath;
     this.votes = 0;
