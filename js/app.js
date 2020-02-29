@@ -27,6 +27,7 @@ function updateImages() {
         var voteItemContainer = document.createElement('div');
         voteItemContainer.classList.add('vote-image-holder');
         var img = document.createElement('img');
+        img.alt = randomImages[i].ProductName;
         img.src = randomImages[i].Image;
         img.classList.add('vote-img');
         img.id = 'vote_' + i;
@@ -72,32 +73,10 @@ function renderResults() {
         resultOutput.push([votes, voteItem]);
     }
     resultOutput.sort(function(a, b) {
-        console.log(a);
-        console.log(b);
         return b[0] - a[0];
     });
     for (var r = 0; r < resultOutput.length; r++) {
         var voteItem = resultOutput[r][1];
         resultsList.appendChild(voteItem);
     }
-    // for (var x = 0; x < results.length; x++) {
-    //     var product = getProductSelected(results[x][0]);
-    //     var votes = results[x].length;
-    //     var voteItem = document.createElement('li');
-    //     var productDisplay = document.createElement('p');
-    //     productDisplay.textContent = product.ProductName;
-    //     var votesDisplay = document.createElement('span');
-    //     votesDisplay.textContent = votes + ' (Seen ' + product.timesSeen + ' times)';
-    //     votesDisplay.classList.add('vote-count');
-    //     productDisplay.appendChild(votesDisplay);
-    //     voteItem.appendChild(productDisplay);
-    //     resultOutput.push([votes, voteItem]);
-    // }
-    // resultOutput.sort(function(a, b) {
-    //     return b[0] - a[0];
-    // });
-    // for (var r = 0; r < resultOutput.length; r++) {
-    //     var voteItem = resultOutput[r][1];
-    //     resultsList.appendChild(voteItem);
-    // }
 }

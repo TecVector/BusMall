@@ -18,31 +18,34 @@
         </section>
     </header>
     <main>
-        <aside class="results-view">
-            <h2>Results</h2>
-            <ul class="results-list" id="resultsList">
-                <li class="defaultMessage">After <span id="votesRequired"></span> votes, you're results will begin to show up here.</li>
-            </ul>
-        </aside>
-        <section class="vote-items-holder">
-            <input type="button" onclick="javascript:window.location.reload()" value="Start Over">
-            <div class="image-holder" id="imageHolder">
-                <!-- <img class="vote-img" id="voteA" src="images/bag.jpg" />
+        <div class="main-content-container">
+            <aside class="results-view">
+                <h2>Results</h2>
+                <ul class="results-list" id="resultsList">
+                    <li class="defaultMessage">After <span id="votesRequired"></span> votes, you're results will begin to show up here.</li>
+                </ul>
+            </aside>
+            <section class="vote-items-holder">
+                <input type="button" onclick="javascript:window.location.reload()" value="Start Over">
+                <div class="image-holder" id="imageHolder">
+                    <!-- <img class="vote-img" id="voteA" src="images/bag.jpg" />
                 <img class="vote-img" id="voteA" src="images/bag.jpg" />
                 <img class="vote-img" id="voteA" src="images/bag.jpg" /> -->
-            </div>
-            <p class="vote-section-text">Pieces of Eight broadside Corsair log jolly boat boatswain salmagundi tackle rutters splice the main brace. Gangplank interloper provost bilge water topsail American Main chase nipperkin scuttle yard. Crack Jennys tea cup port hail-shot tackle
-                bilge rat bounty Jack Ketch transom take a caulk nipper. Mizzen hogshead prow tender spanker galleon heave down crow's nest smartly scuttle. Long boat gunwalls poop deck blow the man down flogging lateen sail piracy belaying pin hardtack
-                rope's end. Scuppers killick haul wind Brethren of the Coast Pirate Round square-rigged plunder scallywag take a caulk belaying pin. Knave dead men tell no tales execution dock gangplank fore to go on account Privateer wench marooned swing
-                the lead. Coxswain matey Shiver me timbers list bucko jolly boat Sail ho fire in the hole draft driver. Clap of thunder tack transom run a rig pillage doubloon ahoy spirits wench cog.</p>
+                </div>
+            </section>
+        </div>
+        <section class="vote-count-chart-holder">
+            <canvas id="busMallChart" height="450" width="100%" class="vote-section-chart">
         </section>
     </main>
     <footer>
         <p>&copy; <span id="currentYear"></span></p>
     </footer>
+    <script src="node_modules/chart.js/dist/Chart.bundle.min.js"></script>
     <script src="js/products.js"></script>
     <script src="js/helpers.js"></script>
     <script src="js/app.js" async defer></script>
+    <script src="js/busMallChart.js" async defer></script>
 </body>
 
 </html>
