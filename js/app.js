@@ -57,7 +57,6 @@ function renderResults() {
     var results = groupBy(voteResults, 'length');
     var resultsList = document.getElementById('resultsList');
     resultsList.innerHTML = '';
-
     var resultOutput = [];
     for (var p = 0; p < ActiveProducts.length; p++) {
         var product = ActiveProducts[p];
@@ -79,4 +78,5 @@ function renderResults() {
         var voteItem = resultOutput[r][1];
         resultsList.appendChild(voteItem);
     }
+    renderChart();
 }

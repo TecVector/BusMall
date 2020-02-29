@@ -1,23 +1,21 @@
 var ctx = document.getElementById('busMallChart').getContext('2d');
-renderChart();
 
 function renderChart() {
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: ActiveProducts.map(p => p.ProductName),
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: getRandomColors(6, '0.2'),
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
+                label: 'Vote Count',
+                data: ActiveProducts.map(p => p.votes),
+                backgroundColor: getRandomColors(ActiveProducts.length, '0.2'),
+                borderColor: getRandomColors(ActiveProducts.length, '1.0'),
+                borderWidth: 1
+            }, {
+                label: 'Times Seen',
+                data: ActiveProducts.map(p => p.seen),
+                backgroundColor: getRandomColors(ActiveProducts.length, '0.2'),
+                borderColor: getRandomColors(ActiveProducts.length, '1.0'),
                 borderWidth: 1
             }]
         },
