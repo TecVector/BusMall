@@ -55,28 +55,30 @@ function voteWasMade(event) {
 function renderResults() {
     imageHolder.innerHTML = '<h1>Voting Closed</h1><p>Thank you for your time!  You can review your results to the left</p>';
     var results = groupBy(voteResults, 'length');
-    var resultsList = document.getElementById('resultsList');
-    resultsList.innerHTML = '';
-    var resultOutput = [];
-    for (var p = 0; p < ActiveProducts.length; p++) {
-        var product = ActiveProducts[p];
-        var votes = product.votes;
-        var voteItem = document.createElement('li');
-        var productDisplay = document.createElement('p');
-        productDisplay.textContent = product.ProductName;
-        var votesDisplay = document.createElement('span');
-        votesDisplay.textContent = votes + ' (Seen ' + product.timesSeen + ' times)';
-        votesDisplay.classList.add('vote-count');
-        productDisplay.appendChild(votesDisplay);
-        voteItem.appendChild(productDisplay);
-        resultOutput.push([votes, voteItem]);
-    }
-    resultOutput.sort(function(a, b) {
-        return b[0] - a[0];
-    });
-    for (var r = 0; r < resultOutput.length; r++) {
-        var voteItem = resultOutput[r][1];
-        resultsList.appendChild(voteItem);
-    }
+    var resultsList = document.getElementById('resultsMessage');
+    resultsList.remove(); // = '<section class="vote-count-chart-holder"><canvas id="busMallChart" height="450" width="100%" class="vote-section-chart"></section>';
+    addToLocalStorage('ProductHistory', JSON.stringify(ActiveProducts));
     renderChart();
+    // var resultOutput = [];
+    // for (var p = 0; p < ActiveProducts.length; p++) {
+    //     var product = ActiveProducts[p];
+    //     var votes = product.votes;
+    //     var voteItem = document.createElement('li');
+    //     var productDisplay = document.createElement('p');
+    //     productDisplay.textContent = product.ProductName;
+    //     var votesDisplay = document.createElement('span');
+    //     votesDisplay.textContent = votes + ' (Seen ' + product.timesSeen + ' times)';
+    //     votesDisplay.classList.add('vote-count');
+    //     productDisplay.appendChild(votesDisplay);
+    //     voteItem.appendChild(productDisplay);
+    //     resultOutput.push([votes, voteItem]);
+    // }
+    // resultOutput.sort(function(a, b) {
+    //     return b[0] - a[0];
+    // });
+    // for (var r = 0; r < resultOutput.length; r++) {
+    //     var voteItem = resultOutput[r][1];
+    //     resultsList.appendChild(voteItem);
+    // }
+    // renderChart();
 }

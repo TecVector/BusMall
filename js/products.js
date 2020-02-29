@@ -39,10 +39,19 @@ var products = [
     ['Bouquet Keeping Wine Glass', 'wine-glass.jpg']
 ];
 
-for (var x = 0; x < products.length; x++) {
-    var imageLocation = 'images/products/' + products[x][1];
-    var newProduct = new Product(products[x][0], imageLocation);
-};
+if (getFromLocalStorage('ProductHistory') === null) {
+    for (var x = 0; x < products.length; x++) {
+        var imageLocation = 'images/products/' + products[x][1];
+        var newProduct = new Product(products[x][0], imageLocation);
+    };
+} else {
+    var allProducts = JSON.parse(getFromLocalStorage('ProductHistory'));
+    for (var p = 0; p < allProducts.length; p++) {
+        var newProduct = new Product(allProducts[p].ProductName, allProducts[p].Image)
+        ActiveProducts[p].timesSeen = allProducts[p].timesSeen;
+        ActiveProducts[p].votes = allProducts[p].votes;
+    }
+}
 
 function getProductSelected(name) {
     return ActiveProducts.find(obj => {
@@ -64,10 +73,10 @@ function getProductsToDisplay(currentImages) {
     var arr = [];
     var selectedIndexes = [];
     for (var i = 0; i < 3; i++) {
-        var selectIndex = (Math.floor(Math.random() * (products.length - i)) + 1);
+        var selectIndex = (Math.floor(Math.random() * (products.length - i)));
         var product = ActiveProducts[selectIndex];
         while (product != undefined && (currentImages.includes(product.ProductName) || selectedIndexes.includes(selectIndex))) {
-            selectIndex = (Math.floor(Math.random() * (products.length - i)) + 1);
+            selectIndex = (Math.floor(Math.random() * (products.length - i)));
             product = ActiveProducts[selectIndex];
         };
         selectedIndexes.push(selectIndex);

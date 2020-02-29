@@ -21,9 +21,10 @@
         <div class="main-content-container">
             <aside class="results-view">
                 <h2>Results</h2>
-                <ul class="results-list" id="resultsList">
-                    <li class="defaultMessage">After <span id="votesRequired"></span> votes, you're results will begin to show up here.</li>
-                </ul>
+                <section class="vote-count-chart-holder">
+                    <p id="resultsMessage" class="defaultMessage">After <span id="votesRequired"></span> votes, you're results will begin to show up here.</p>
+                    <canvas id="busMallChart" height="450" width="100%" class="">
+                </section>
             </aside>
             <section class="vote-items-holder">
                 <input type="button" onclick="javascript:window.location.reload()" value="Start Over">
@@ -34,16 +35,18 @@
                 </div>
             </section>
         </div>
-        <section class="vote-count-chart-holder">
+        <!-- <section class="vote-count-chart-holder">
             <canvas id="busMallChart" height="450" width="100%" class="vote-section-chart">
-        </section>
+        </section> -->
     </main>
     <footer>
         <p>&copy; <span id="currentYear"></span></p>
     </footer>
+    
+    <script src="js/storage.js"></script>
     <script src="node_modules/chart.js/dist/Chart.bundle.min.js"></script>
-    <script src="js/products.js"></script>
-    <script src="js/helpers.js"></script>
+    <script src="js/products.js" async defer></script>
+    <script src="js/helpers.js"async defer></script>
     <script src="js/app.js" async defer></script>
     <script src="js/busMallChart.js" async defer></script>
 </body>

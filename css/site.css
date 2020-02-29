@@ -81,9 +81,10 @@ body {
 }
 
 .vote-count-chart-holder {
-    height: 500px;
+    height: auto;
     text-align: center;
-    margin: 0 20%;
+    margin: 0;
+    min-height: 500px;
 }
 
 footer {
@@ -93,4 +94,8 @@ footer {
     position: fixed;
     bottom: 0;
     background-color: aquamarine;
+}
+
+#busMallChart {
+    height: 80vh;
 }
